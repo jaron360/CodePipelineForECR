@@ -7,6 +7,9 @@ RUN yum update -y && \
 # Install apache and write hello world message
 RUN echo 'Hello World, I am just adding a new change here!' > /var/www/html/index.html
 
+#Adding a line for testing
+RUN yum install -y telnet
+
 # Configure apache
 RUN echo 'mkdir -p /var/run/httpd' >> /root/run_apache.sh && \
  echo 'mkdir -p /var/lock/httpd' >> /root/run_apache.sh && \
