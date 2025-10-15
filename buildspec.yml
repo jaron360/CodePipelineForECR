@@ -1,0 +1,7 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - docker build -t actions/image-repo .
+      - docker run actions/image-repo echo "Hello, World!"
