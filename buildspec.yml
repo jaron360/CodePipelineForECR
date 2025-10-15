@@ -3,8 +3,7 @@ phases:
   pre_build:
     commands:
       #Install Trivy image vulnerability scanner
-      - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | \
-        sudo sh -s -- -b /usr/local/bin
+      - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
   build:
     commands:
       - docker build -t actions/image-repo .
