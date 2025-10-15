@@ -13,4 +13,4 @@ phases:
     commands:
       - echo "Starting Trivy vulnerability scan..."
       #    --exit-code 1 will fail the CodeBuild job if CRITICAL or HIGH findings exist.
-      - trivy --no-progress --exit-code 1 --severity HIGH,CRITICAL actions/image-repo --report summary
+      -  trivy image actions/image-repo --exit-code 1 --severity HIGH,CRITICAL --report summary
