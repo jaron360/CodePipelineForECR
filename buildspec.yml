@@ -1,7 +1,17 @@
 version: 0.2
-
 phases:
+  pre_build:
+    commands:
+      #Install Trivy image vulnerability scanner
+      - curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | \
+        sudo sh -s -- -b /usr/local/bin
   build:
     commands:
       - docker build -t actions/image-repo .
       - docker run actions/image-repo echo "Hello, World!"
+      
+  post_build:
+    commands:
+      - echo "Starting Trivy vulnerability scan..."
+      #    --exit-code 1 will fail the CodeBuild job if CRITICAL or HIGH findings exist.
+      - trivy --no-progress --exit-code 1 --severity HIGH,CRITICAL actions/image-repo --report summary
