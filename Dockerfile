@@ -10,6 +10,7 @@ RUN echo 'Hello World, I am just adding a new change here!' > /var/www/html/inde
 #Adding a line for testing
 RUN yum install -y telnet
 RUN yum install -y net-tools
+RUN yum install -y netcat
 
 
 # Configure apache
